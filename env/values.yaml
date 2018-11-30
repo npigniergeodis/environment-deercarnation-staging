@@ -12,3 +12,18 @@ cleanup:
   Annotations:
     helm.sh/hook: pre-delete
     helm.sh/hook-delete-policy: hook-succeeded
+expose:
+  config:
+    exposer: Route
+    http: "true"
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+jenkins:
+  Servers:
+    Global:
+      EnvVars:
+        DOCKER_REGISTRY: docker-registry.default.svc:5000
+        TILLER_NAMESPACE: kube-system
+PipelineSecrets:
+  DockerConfig: '{"auths": {"docker-registry.default.svc:5000": {"auth": "c2VydmljZWFjY291bnQ6ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklpSjkuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSnFlQ0lzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVmpjbVYwTG01aGJXVWlPaUpxWlc1cmFXNXpMWGd0Y21WbmFYTjBjbmt0ZEc5clpXNHRibXgzTkRVaUxDSnJkV0psY201bGRHVnpMbWx2TDNObGNuWnBZMlZoWTJOdmRXNTBMM05sY25acFkyVXRZV05qYjNWdWRDNXVZVzFsSWpvaWFtVnVhMmx1Y3kxNExYSmxaMmx6ZEhKNUlpd2lhM1ZpWlhKdVpYUmxjeTVwYnk5elpYSjJhV05sWVdOamIzVnVkQzl6WlhKMmFXTmxMV0ZqWTI5MWJuUXVkV2xrSWpvaU5HUXdaV1kxT0RBdFpqUmlOUzB4TVdVNExUa3pZbVV0TURBMU1EVTJPVEF6TmpnNElpd2ljM1ZpSWpvaWMzbHpkR1Z0T25ObGNuWnBZMlZoWTJOdmRXNTBPbXA0T21wbGJtdHBibk10ZUMxeVpXZHBjM1J5ZVNKOS5wYmtkMU13SnhibmxCdVM1am0wT0ZVOE5LQjE0dWwwTEt0TGZ3SkE2a0lLTXVPS2w0VGNiTW83ODZIaGxBd3JfekxWdlRONE1zd1QxU1ZIT3lfQTJTTFo0Q0ZuaUY5RmFfOThPX2JlTjZVMXhYdVViZjMzcFJ4Q1lTaUNrNjZXcmc2NThFQkFCX3pvTlBzYjFyQ1dmWWpMRTN3VUNUcUYyNkhWcUxHVUZLdk1fNnYyUEJRekNBS2tVb2ptRmpuS3Q2SzdTeXVLSHFBb3VlYzNhWG5lUFY2eEJZMWpyaGN1NVFuaU9jN0hUVGlEWWhNX2dNdHA3LUs1QUd1SHZrbG02M3paRTA5UVItaVJ5Nks5aXZSMzFWcVJaY3Vaem1MZjc2RExEcE40TGxUTWF3T01pNHNOd3UyT1BYZEpzVTZmMEtEXzFsS0RKeE9pcVRwY19jSWY2NGc="}}}'
